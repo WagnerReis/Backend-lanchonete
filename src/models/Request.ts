@@ -36,9 +36,12 @@ class Request {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne(() => Attendant, (attendant) => attendant.request, { eager: true })
+  @ManyToOne(() => Attendant, attendant => attendant.request, { eager: true })
   @JoinColumn({ name: 'attendant_id' })
   attendant: Attendant;
+
+  @Column()
+  attendant_id: string;
 }
 
 export default Request;
