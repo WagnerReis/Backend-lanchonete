@@ -10,7 +10,7 @@ import {
 
 import Attendant from './Attendant';
 
-@Entity('request')
+@Entity('requesteds')
 class Request {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -36,7 +36,7 @@ class Request {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToOne(() => Attendant, attendant => attendant.request, { eager: true })
+  @ManyToOne(() => Attendant, attendant => attendant.requested, { eager: true })
   @JoinColumn({ name: 'attendant_id' })
   attendant: Attendant;
 

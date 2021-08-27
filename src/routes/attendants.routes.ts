@@ -6,9 +6,13 @@ import CreateAttendantService from '../services/CreateAttendantService';
 
 const attendantsRouter = Router();
 
-attendantsRouter.get('/', (request, response) => {
+interface AttendantInterface {
+  password?: string;
+}
+
+attendantsRouter.get('/', async (request, response) => {
   const attendantsRepository = getRepository(Attendant);
-  const attendant = attendantsRepository.find();
+  const attendant = await attendantsRepository.find();
 
   return response.json(attendant);
 });
@@ -24,7 +28,10 @@ attendantsRouter.post('/', async (request, response) => {
     password,
   });
 
-  return response.json(attendant);
+  const attendant2: AttendantInterface = attendant;
+  delete attendant2.password;
+
+  return response.json(attendant2);
 })
 
 

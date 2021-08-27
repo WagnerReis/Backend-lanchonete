@@ -24,7 +24,7 @@ class CreateAttendantService {
       name,
       email,
       password,
-    })
+    });
 
     await attendantRepository.save(attendant);
 

@@ -5,7 +5,7 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import Request from './Request';
+import Requested from './Requested';
 
 @Entity('attendants')
 class Attendant {
@@ -21,8 +21,8 @@ class Attendant {
   @Column()
   password: string;
 
-  @OneToMany(() => Request, (request) => request.attendant)
-  request: Request;
+  @OneToMany(() => Requested, (requested) => requested.attendant)
+  requested: Requested;
 }
 
 export default Attendant;
